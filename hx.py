@@ -1,0 +1,49 @@
+''' HX Playing Card Hash/MAC'''
+''' by KryptoMagick (Karl Zander) '''
+from random import shuffle
+
+class HX:
+    def __init__(self):
+        self.deck = list(range(52))
+        
+    def gen_rand_decks(self):
+    	shuffle(self.deck)
+    	
+    def hx_input(self, n):
+    	self.deck.append(self.deck.pop(n))
+    	
+    def hx_layerA(self):
+    	for x in range():
+    		cell = self.deck[0]
+    	
+    def heka_core(self):
+         self.deck.append(self.deck.pop(0))
+         self.deck.append(self.deck.pop(0))
+         
+         self.deck.insert(self.deck[1], self.deck.pop(0))
+         
+         
+         for x in range(self.deck[self.deck[self.deck[0]]]):
+         	self.deck.append(self.deck.pop(0))
+         
+    def input_letter(self, letter):
+        num = ord(letter) - 65
+        self.hx_input(num)
+
+    def mac(self, letters):
+        for x in range(len(letters)):
+            self.input_letter(letters[x])
+        self.heka_core()
+        m = []
+        for x in range(len(self.deck)):
+        	self.hx_input(self.deck[x] % 26)
+        for x in range(len(self.deck)):
+        	m.append(chr((self.deck[x] % 26) + 65))
+        return "".join(m)
+        
+hx = HX()
+#heka.gen_rand_decks()
+m = [chr(65)] * 100000
+msg = "".join(m)
+tag = hx.mac(msg)
+print(tag)
