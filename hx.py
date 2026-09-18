@@ -12,10 +12,6 @@ class HX:
     def hx_input(self, n):
     	self.deck.append(self.deck.pop(n))
     	
-    def hx_layerA(self):
-    	for x in range():
-    		cell = self.deck[0]
-    	
     def heka_core(self):
          self.deck.append(self.deck.pop(0))
          self.deck.append(self.deck.pop(0))
@@ -44,6 +40,7 @@ class HX:
 hx = HX()
 #heka.gen_rand_decks()
 m = [chr(65)] * 100000
-msg = "".join(m)
+#msg = "".join(m)
+msg = "A"
 tag = hx.mac(msg)
 print(tag)
