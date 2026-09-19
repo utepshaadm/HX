@@ -22,7 +22,7 @@ class HX:
          
     def input_letter(self, letter):
         num = ord(letter) - 65
-        self.qx_input(num)
+        self.hx_input(num)
 
     def mac(self, letters):
         m = []
@@ -32,7 +32,7 @@ class HX:
         	m.append(self.heka_core())
         return "".join(m)
         
-Hx = HX()
+hx = HX()
 #heka.gen_rand_decks()
 m = [chr(65)] * 100000
 #msg = "".join(m)
