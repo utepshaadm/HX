@@ -1,4 +1,4 @@
-''' HX Playing Card Hash/MAC'''
+ů''' HX Playing Card Hash/MAC'''
 ''' by KryptoMagick (Karl Zander) '''
 from random import shuffle
 
@@ -32,7 +32,7 @@ class HX:
         self.heka_core()
         m = []
         for x in range(len(self.deck)):
-        	self.hx_input(self.deck[x] % 26)
+        	self.hx_input(self.deck[x])
         for x in range(len(self.deck)):
         	m.append(chr((self.deck[x] % 26) + 65))
         return "".join(m)
