@@ -28,9 +28,8 @@ class HX:
         m = []
         for x in range(len(letters)):
             self.input_letter(letters[x])
-        tmp = list(self.deck)
         for x in range(52):
-        	self.hx_input(tmp[x])
+        	self.hx_input(self.deck[x])
         for x in range(52):
         	m.append(self.heka_core())
         return "".join(m)
