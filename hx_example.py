@@ -2,15 +2,17 @@
 from heka import HEKA
 from hx import HX
 from random import shuffle
+from hx_kdf import HXKDF
 
 # Encryption
 msg ="ATTACKATDAWN"
+phrase = "SECRET"
+kdf = HXKDF()
+key = kdf.kdf(phrase)
 nonce = list(range(52))
 shuffle(nonce)
-heka = HEKA()
-heka.gen_rand_decks()
+heka = HEKA(key)
 heka.add_nonce(nonce)
-key = list(heka.deck)
 keyhx = HX()
 keyhx.deck = list(key)
 key2 = keyhx.mac("A")
@@ -22,6 +24,8 @@ tag = hx.mac(ctxt)
 print(tag)
 
 # Decryption
+kdf = HXKDF()
+key = kdf.kdf(phrase)
 
 keyhx = HX()
 keyhx.deck = list(key)
@@ -32,8 +36,7 @@ tmp = hxd.mac(key2)
 verify = hxd.mac(ctxt)
 print(verify)
 
-hekad = HEKA()
+hekad = HEKA(key)
 hekad.add_nonce(nonce)
-hekad.deck = list(key)
 ptxt = hekad.decrypt(ctxt)
 print(ptxt)
